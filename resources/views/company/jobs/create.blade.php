@@ -104,27 +104,7 @@
 
           </div>
       </div>
-      <form action="{{route('company.cover.photo')}}" method="POST" enctype="multipart/form-data">
-         @csrf 
-      <div class="card mt-5">
-          <div class="card-header">Photo de couverture</div>
-          <div class="card-body">
-             <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="inputGroupFile04" name="cover_photo">
-                                                    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
-                                                </div>
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-success" type="submit"><span class="ti-import"></span></button>
-                                                </div>
-                                            </div>
-                                            <div class="text-center mt-3">
-                                              <img src="{{asset('uploads/coverphoto')}}/{{Auth::user()->Company->cover_photo}}" width="100" style="width: 100%;">
-                                            </div>      
-          </div>
 
-      </div>
-</form>
 
         </div>
       
