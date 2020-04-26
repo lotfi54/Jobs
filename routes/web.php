@@ -66,7 +66,7 @@ Route::post('employer/register','EmployerRegisterController@employerRegister')->
 
 
 Route::get('user/jobs/create','JobController@create')->name('job.create');
-Route::post('user/jobs/store','JobController@store')->name('job.store');
+Route::post('user/jobs/create','JobController@store')->name('job.store');
 
 });
 

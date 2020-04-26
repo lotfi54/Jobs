@@ -17,26 +17,41 @@
 <div class="card mt-3">
                 <div class="card-header mt-0">Mise à jour du profil de l'entreprise</div>
                     <div class="card-body">
-                        <form method="POST" action="{{route('company.profile.create')}}">
+                        <form method="POST" action="{{route('company.job.store')}}">
                             @csrf 
                             <div class="form-group">
                                 <div class="form-group">
                                             <label for="slogan" class="col-form-label">Intitulé du job</label>
-                                            <input class="form-control" type="text" placeholder="Intitulé du job" name="title" >
+                                            <input type="text" placeholder="Intitulé du job" name="title" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}"  value="{{ old('title') }}" >
+                                             @if ($errors->has('title'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('title') }}</strong>
+                </span>
+                 @endif
                                         </div>
 
                                          <div class="form-group">
                                             <label for="description" class="col-form-label">Description</label>
-                                        <textarea class="form-control" name="description">
+                                        <textarea  name="description" class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }}"  value="{{ old('description') }}">
                          
                                         </textarea>
+                                      @if ($errors->has('description'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('description') }}</strong>
+                </span>
+                 @endif
                                         </div>
                         
                                         <div class="form-group">
                                             <label for="role" class="col-form-label">Role</label>
-                                        <textarea class="form-control" name="role">
-                         
+                                        <textarea  name="roles" class="form-control {{ $errors->has('roles') ? ' is-invalid' : '' }}"  value="{{ old('roles') }}">
                                         </textarea>
+
+                                                                 @if ($errors->has('roles'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('roles') }}</strong>
+                </span>
+                 @endif
                                         </div>
 
                       
@@ -48,7 +63,7 @@
 
                                         <div class="form-group">
                                             <label for="address" class="col-form-label">Adresse</label>
-                                            <input class="form-control" type="text" placeholder="Adresse" name="addresd">
+                                            <input class="form-control" type="text" placeholder="Adresse" name="address">
                                         </div>
 
                              
@@ -62,7 +77,7 @@
       
    
 
-     </form>
+    
     
 </div>
 </div>
@@ -83,20 +98,20 @@
                                         </select>
 
                                     <label for="type" class="col-form-label">Type de Contrat</label>
-                                          <select  class="selectpicker form-control" multiple title="Type de contrat">
+                                          <select  name="type" class="selectpicker form-control" multiple title="Type de contrat" >
                                           <option value="cdi">CDI-Contrat à durée indéterminée</option>
                                           <option value="cdd">CDD–Contrat à durée déterminée</option>
                                         </select>
 
-                                    <label for="type" class="col-form-label">Status</label>
-                                          <select  class="selectpicker form-control" title="Status">
+                                    <label for="status" class="col-form-label">Status</label>
+                                          <select name="status" class="selectpicker form-control" title="Status" >
                                           <option value="cdi">Live</option>
                                           <option value="cdd">En-cours</option>
                                         </select>
                                         </div>
 
                                           <div class="form-group">
-                                            <label for="lastdate" class="col-form-label">Publier le</label>
+                                            <label for="last_date" class="col-form-label">Publier le</label>
                                             <input class="form-control" type="date" placeholder="Adresse" name="last_date">
                                         </div>
             
@@ -109,7 +124,7 @@
         </div>
       
     </div>
-
+ </form>
 
 
 

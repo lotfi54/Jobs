@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Job extends Model
 {
-
-	protected $gurarded = []; 
+protected $fillable = ['user_id','company_id','title','slug','description','roles','category_id','position','address','type','status','last_date'];
     public function getRoutekeyName()  {
     	return 'slug'; 
     }

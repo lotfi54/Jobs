@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Company;
-use Illuminate\Support\Str;
+use App\Company;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\JobPostRequest;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use\App\Job;
+
 class JobController extends Controller
 {
     /**
@@ -36,27 +40,32 @@ class JobController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(JobPostRequest $request)
     {
-        $user_id = auth()->user()-id; 
-        $company = Company::where('user_id',$user_id)->first(); 
-        $company_id = company->id; 
+       $user_id = auth()->user()->id;
+        $company = Company::where('user_id',$user_id)->first();
+        $company_id = $company->id;
         Job::create([
-            'user_id'=> $users_id; 
-            'company_id' => $company_id; 
-            'title'=>request('title'), 
-            'slug'=>Str::slug('title'), 
+            'user_id' => $user_id,
+            'company_id' => $company_id,
+            'title'=>request('title'),
+            'slug' =>Str::slug(request('title')),
             'description'=>request('description'),
             'roles'=>request('roles'),
-            'category_id'=>request('category_id'),
+            'category_id' =>request('category'),
             'position'=>request('position'),
             'address'=>request('address'),
             'type'=>request('type'),
             'status'=>request('status'),
-            'last_date'=>request('last_date'),
+            'last_date'=>request('last_date')
+          
+         
 
 
         ]);
+
+          Toastr::success('Le job à été crée', 'Success');
+return redirect()->route('company.job.create');
     }
 
     /**
