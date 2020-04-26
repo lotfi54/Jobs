@@ -16,14 +16,16 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
                 $table->string('user_id');
-            $table->string('address');
-            $table->string('gender');
-            $table->string('dob');
-            $table->string('experience');
-            $table->string('bio');
-            $table->string('cover_letter');
-            $table->string('resume');
-            $table->string('avatar');
+            $table->string('address')->nullable($value = true);
+            $table->string('gender')->nullable($value = true);
+            $table->string('firstname')->nullable($value = true);
+            $table->string('lastname')->nullable($value = true);
+            $table->string('dob')->nullable($value = true);
+            $table->string('experience')->nullable($value = true);
+            $table->string('bio')->nullable($value = true);
+            $table->string('cover_letter')->default('');
+            $table->string('resume')->default('');
+            $table->string('avatar')->default('');
             $table->timestamps();
         });
     }

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Profile;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -29,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo;
 
     /**
      * Create a new controller instance.
@@ -38,6 +40,14 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+
+        if (Auth::check() && Auth::user()->role->id == 1)
+        {
+            $this->redirectTo = route('admin.dashboard');
+        } else {
+            $this->redirectTo = route('company.dashboard');
+        }
+
         $this->middleware('guest');
     }
 
@@ -53,6 +63,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+             'gender'=>'required'
         ]);
     }
 
@@ -64,10 +75,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => Hash::make($data['password'])
+            // 'role_id'=>$data['role_id']
         ]);
+
+        Profile::create([
+            // 'user_id'=>$user->id,
+          'user_id' => $user->id,
+            'gender'=>request('gender')
+        ]);
+           return $user;
+
+           dd($user);
     }
 }
