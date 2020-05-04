@@ -50,15 +50,15 @@
      <div class="logo-company">
        
 
-               @if(empty(Auth::user()->company->logo))
+    @if(empty($company->logo))
 
-      <img width="100" src="{{asset('avatar/serwman1.jpg')}}">
+      <img width="100" src="{{asset('avatar/man.jpg')}}">
 
       @else
       <img width="100" src="{{asset('uploads/logo')}}/{{$company->logo}}">
 
-
       @endif
+
     </div>
   </div>
 </div>
@@ -88,7 +88,7 @@
                <td><i class="fa fa-map-marker"></i>&nbsp;Adresse : {{$job->address}}</td>
                <td><i class="fa fa-globe"></i>&nbsp;Date : {{$job->created_at->diffForHumans()}}</td>
                <td>
-                <a href="{{route('jobs.show',[$job->id,$job->slug])}}">
+                <a href="{{route('job.show',[$job->id,$job->slug])}}">
                 <div class="btn-apply">
                   <p>Postuler</p>
                 </div>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Job;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
@@ -14,7 +16,7 @@ class JobController extends Controller
      */
     public function index()
     {
-       $jobs = Job::all()->take(10); 
+       $jobs = Job::all(); 
        return view('welcome',compact('jobs')); 
     }
 
@@ -49,7 +51,7 @@ class JobController extends Controller
     {
         // $job=Job::find($id); 
 
-        return view('jobs.show',compact('job'));
+        return view('job.show',compact('job'));
     }
 
     /**
@@ -85,4 +87,21 @@ class JobController extends Controller
     {
         //
     }
+
+
+ public function apply(Request $request, $id)
+    {
+        $jobId = Job::find($id); 
+        $jobId->users()->attach(Auth::user()->id); 
+            Toastr::success('Votre demande à été envoyé', 'Success');
+ return redirect()->back()->with('message','Candidature envoyé');
+    }
+
+
+
+
+
+
+
+
 }

@@ -19,7 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show'); 
+Route::get('/job/{id}/{job}','JobController@show')->name('job.show'); 
+
+
+Route::post('/application/{id}','JobController@apply')->name('apply');
+
 
  // company 
 
@@ -68,10 +72,18 @@ Route::post('employer/register','EmployerRegisterController@employerRegister')->
 Route::get('user/jobs/create','JobController@create')->name('job.create');
 Route::post('user/jobs/create','JobController@store')->name('job.store');
 
+Route::get('/jobs/{id}/edit','JobController@edit')->name('job.edit');
+
+Route::post('/jobs/{id}/edit','JobController@update')->name('job.update');
+
+Route::get('user/jobs/applications','JobController@applicant')->name('applicant');
+
 });
 
-        Route::group(['as'=>'seeker.','prefix'=>'seeker','namespace'=>'Seeker','middleware'=>['auth','seeker']], function (){
-    Route::get('dashboard','DashboardController@index')->name('dashboard');
+    
+    Route::group(['as'=>'seeker.','prefix'=>'seeker','namespace'=>'Seeker','middleware'=>['auth','seeker']], function (){
+    
+Route::get('dashboard','DashboardController@index')->name('dashboard');
 
    Route::get('profile','userController@index')->name('profile');
 

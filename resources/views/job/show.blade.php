@@ -4,6 +4,11 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-8">
+            @if(Session::has('message'))
+            <div class="alert alert-success">
+                {{Session::get('message')}}
+            </div>
+            @endif
             <div class="card">
                 <div class="card-header">{{$job->title}}</div>
 
@@ -30,7 +35,17 @@
             </div>
         </div>
         <div class="btn-applySingle mt-3">
-            <p>Postuler</p>
+             @if(Auth::check()&&Auth::user()->role_id==3)
+            @if(!$job->checkApplication())
+            <form action="{{route('apply',[$job->id])}}" method="POST">
+            @csrf 
+           
+                <button type="submit" class="btn btn-success">
+                    Postuler
+                </button>
+            </form>
+            @endif 
+            @endif 
         </div>
     </div>
     </div>

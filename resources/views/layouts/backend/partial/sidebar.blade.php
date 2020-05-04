@@ -64,6 +64,11 @@
                                
                             </li> 
 
+                            <li class="{{ Request::is('company/applicant') ? 'active' : '' }}">
+                                <a href="{{route('company.applicant')}}" aria-expanded="true"><i class="ti-dashboard"></i><span>Applicants</span></a>
+                               
+                            </li> 
+                           
 
  <li class="{{ Request::is('company/profile') ? 'active' : '' }}">
                                 <a href="{{route('company.profile')}}" aria-expanded="true"><i class="ti-dashboard"></i><span>Profile</span></a>

@@ -126,15 +126,14 @@ return redirect()->route('seeker.profile');
     }
 
     public function resume(Request $request) {
-         $user_id = auth()->user()->id; 
-         $resume = $request->file('resume')->store('public/files');
-    Profile::where('user_id',$user_id)->update([
-
-    'resume'=>$resume
-   
-
-    ]);
-
+    $this->validate($request,[
+            'resume'=>'required|mimes:pdf,doc,docx|max:20000'
+        ]);
+          $user_id = auth()->user()->id;
+          $resume = $request->file('resume')->store('public/files');
+            Profile::where('user_id',$user_id)->update([
+              'resume'=>$resume
+            ]);
      Toastr::success('Le cv à été mis a jour', 'Success');
     return redirect()->route('seeker.profile');
 

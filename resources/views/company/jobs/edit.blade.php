@@ -15,14 +15,14 @@
         <div class="col-md-8">
        
             <div class="card">
-            <div class="card-header">Create a job</div>
+            <div class="card-header">Mettre à jour un job</div>
             <div class="card-body">
 
-            <form action="{{route('company.job.store')}}" method="POST">@csrf
+            <form action="{{route('company.job.update',[$jobs->id])}}" method="POST">@csrf
 
             <div class="form-group">
                 <label for="title">Intitulé du job:</label>
-                <input type="text" name="title" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}"  value="{{ old('title') }}">
+                <input type="text" name="title" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}"  value="{{ $jobs->title }}">
                 @if ($errors->has('title'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('title') }}</strong>
@@ -33,7 +33,7 @@
             
             <div class="form-group">
                 <label for="description">Description:</label>
-            <textarea name="description" id="summernote" class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }}" >{{ old('description') }}</textarea>
+            <textarea name="description" id="summernote" class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }}" >{{ old('description') }}{{ $jobs->description }}</textarea>
             @if ($errors->has('description'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('description') }}</strong>
@@ -43,7 +43,9 @@
 
             <div class="form-group">
                 <label for="role">Role:</label>
-            <textarea name="roles"  class="form-control {{ $errors->has('roles') ? ' is-invalid' : '' }}" >{{old('roles')}}</textarea>
+            <textarea name="roles"  class="form-control {{ $errors->has('roles') ? ' is-invalid' : '' }}" >{{old('roles')}}
+{{ $jobs->title }}
+            </textarea>
             @if ($errors->has('roles'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('roles') }}</strong>
@@ -54,14 +56,14 @@
                 <label for="category">Categorie:</label>
                 <select name="category" class="form-control">
                     @foreach(App\Category::all() as $cat)
-                        <option value="{{$cat->id}}">{{$cat->name}}</option>
+                         <option value="{{$cat->id}}" {{$cat->id==$jobs->category_id?'selected':''}}>{{$cat->name}}</option>
                     @endforeach
                 </select>
 
             </div>
             <div class="form-group">
                 <label for="position">Position:</label>
-                <input type="text" name="position" class="form-control {{ $errors->has('position') ? ' is-invalid' : '' }}"  value="{{ old('position') }}">
+                <input type="text" name="position" class="form-control {{ $errors->has('position') ? ' is-invalid' : '' }}"  value="{{ $jobs->position }}">
                 @if ($errors->has('position'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('position') }}</strong>
@@ -71,7 +73,7 @@
             </div>
             <div class="form-group">
                 <label for="address">Adresse:</label>
-                <input type="text" name="address" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}"  value="{{ old('address') }}">
+                <input type="text" name="address" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}"  value="{{ $jobs->address }}">
                 @if ($errors->has('address'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('address') }}</strong>
@@ -126,26 +128,28 @@
             </div> --}}
  
 
-
-
-            <div class="form-group">
-                <label for="type">Type de contrat:</label>
+			<div class="form-group">
+                <label for="type">Type:</label>
                 <select class="form-control" name="type">
-                    <option value="fulltime">fulltime</option>
-                    <option value="parttime">parttime</option>
-                    <option value="casual">casual</option>
+                    <option value="fulltime"{{$jobs->type=='fulltime'?'selected':''}}>fulltime</option>
+                    <option value="partime"{{$jobs->type=='partime'?'selected':''}}>partime</option>
+                    <option value="casual"{{$jobs->type=='casual'?'selected':''}}>casual</option>
                 </select>
             </div>
-            <div class="form-group">
+
+
+
+          <div class="form-group">
                 <label for="status">Status:</label>
                 <select class="form-control" name="status">
-                    <option value="1">Enline</option>
-                    <option value="0">en-cours</option>
+                <option value="1"{{$jobs->status=='1'?'selected':''}}>Live</option>
+                <option value="0"{{$jobs->status=='0'?'selected':''}}>Draft</option>
                 </select>
             </div>
+
             <div class="form-group">
                 <label for="lastdate">Date de publication:</label>
-                <input type="date"   name="last_date" class="form-control">
+                <input type="date"   name="last_date" class="form-control" value="{{$jobs->last_date}}">
                
             </div>
 

@@ -52,4 +52,8 @@ public function profile(){
     public function company(){
         return $this->hasOne(Company::class);
     }
+
+
+
+
 }

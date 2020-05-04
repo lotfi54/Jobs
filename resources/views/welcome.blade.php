@@ -21,7 +21,7 @@
                <td><i class="fa fa-map-marker"></i>&nbsp;Adresse : {{$job->address}}</td>
                <td><i class="fa fa-globe"></i>&nbsp;Date : {{$job->created_at->diffForHumans()}}</td>
                <td>
-                <a href="{{route('jobs.show',[$job->id,$job->slug])}}">
+                <a href="{{route('job.show',[$job->id,$job->slug])}}">
                 <div class="btn-apply">
                   <p>Postuler</p>
                 </div>

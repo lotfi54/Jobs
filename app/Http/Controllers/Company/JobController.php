@@ -19,7 +19,9 @@ class JobController extends Controller
     public function index()
     {
 
-        $jobs = Job::all()->take(10); 
+
+$jobs = Job::where('user_id',auth()->user()->id)->get();
+       
      
         return view('company.jobs.index',compact('jobs'));
     }
@@ -79,6 +81,14 @@ return redirect()->route('company.job.create');
         //
     }
 
+
+ public function applicant(){
+        $applicants = Job::has('users')->where('user_id',auth()->user()->id)->get();
+
+        return view('company.jobs.applicants',compact('applicants'));
+    }
+    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -87,7 +97,8 @@ return redirect()->route('company.job.create');
      */
     public function edit($id)
     {
-        //
+        $jobs = Job::findOrFail($id); 
+        return view('company.jobs.edit',compact('jobs'));
     }
 
     /**
@@ -99,7 +110,10 @@ return redirect()->route('company.job.create');
      */
     public function update(Request $request, $id)
     {
-        //
+        $job = Job::findOrFail($id);
+        $job->update($request->all());
+         Toastr::success('Mise à jours réussi', 'Success');
+        return redirect()->route('company.jobs');
     }
 
     /**
