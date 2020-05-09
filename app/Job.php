@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Company;
+use App\Categroy;
 use Illuminate\Database\Eloquent\Model;
 
 class Job extends Model
@@ -25,5 +26,15 @@ public function checkApplication() {
     return \DB::table('job_user')->where('user_id',auth()->user()->id)->where('job_id',$this->id)->exists(); 
 }
 
+ public function category() {
+    	return $this->belongsTo('App\Category');
+    }
+
+ public function favorites(){
+        return $this->belongsToMany(Job::class,'favourites','job_id','user_id')->withTimeStamps();
+    }
+    public function checkSaved(){
+        return \DB::table('favourites')->where('user_id',auth()->user()->id)->where('job_id',$this->id)->exists();
+    }
 
 }

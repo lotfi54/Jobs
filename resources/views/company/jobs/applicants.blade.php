@@ -15,9 +15,9 @@
 
  
 <div class="col-lg-8 mt-5">
-
+   @foreach($applicants as $applicant)
           <div class="card">
-              @foreach($applicants as $applicant)
+           
               <div class="card-header">
               	   <a href="{{route('job.show',[$applicant->id,$applicant->slug])}}">
               	{{$applicant->title}}</a>
@@ -65,12 +65,20 @@
                             </div>
                         </div>
                     </div>
-              </div>
+              </div>    @endforeach
            
-              @endforeach
+          
           </div>            
-                             
-</div>
+        </div>
+        </div>                     
+
+
+
+
+
+
+
+
 
 
 @endsection

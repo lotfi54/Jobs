@@ -20,7 +20,7 @@ class JobController extends Controller
     {
 
 
-$jobs = Job::where('user_id',auth()->user()->id)->get();
+$jobs = Job::where('user_id',auth()->user()->id)->orderBy('last_date', 'desc')->paginate(6);
        
      
         return view('company.jobs.index',compact('jobs'));
@@ -83,7 +83,7 @@ return redirect()->route('company.job.create');
 
 
  public function applicant(){
-        $applicants = Job::has('users')->where('user_id',auth()->user()->id)->get();
+        $applicants = Job::has('users')->where('user_id',auth()->user()->id)->orderBy('last_date', 'desc')->paginate(6);
 
         return view('company.jobs.applicants',compact('applicants'));
     }

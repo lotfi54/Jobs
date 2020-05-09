@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'JobController@index');
 
-Auth::routes();
+// Auth::routes();
+
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -24,6 +26,14 @@ Route::get('/job/{id}/{job}','JobController@show')->name('job.show');
 
 Route::post('/application/{id}','JobController@apply')->name('apply');
 
+Route::get('/alljobs','JobController@allJobs')->name('alljobs');
+
+Route::post('/save/{id}','FavouriteController@saveJob');
+
+Route::post('/unsave/{id}','FavouriteController@unSaveJob');
+// search 
+
+Route::get('/jobs/search','JobController@searchJobs');
 
  // company 
 
@@ -83,7 +93,7 @@ Route::get('user/jobs/applications','JobController@applicant')->name('applicant'
     
     Route::group(['as'=>'seeker.','prefix'=>'seeker','namespace'=>'Seeker','middleware'=>['auth','seeker']], function (){
     
-Route::get('dashboard','DashboardController@index')->name('dashboard');
+    Route::get('dashboard','DashboardController@index')->name('dashboard');
 
    Route::get('profile','userController@index')->name('profile');
 
@@ -93,4 +103,11 @@ Route::get('dashboard','DashboardController@index')->name('dashboard');
 
    Route::post('user/resume','UserController@resume')->name('resume');
    Route::post('user/avatar','UserController@avatar')->name('avatar');
+
+    Route::get('favoris','FavorisController@index')->name('favoris');
+
+  // Route::post('/unsave/{id}','FavouriteController@unSaveJob');
+  // Route::pot('/favoris/','FavouriteController@unSaveJob');
+  //  //  save and unsave job 
+ 
 });

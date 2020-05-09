@@ -10,13 +10,27 @@
   
 
 <div class="row">
-   <div class="col-md-3">
-            @if(empty(Auth::user()->profile->avatar))
-            <img src="{{asset('avatar/man.jpg')}}" width="100" style="width: 100%;">
+   <div class="col-md-3 mt-4">
+
+  <div class="d-flex justify-content-center ">
+      <div class="image_outer_container">
+        
+        <div class="image_inner_container">
+     
+ @if(empty(Auth::user()->profile->avatar))
+            <img src="{{asset('avatar/man.jpg')}}"  class="img-profile">
             @else
-            <img src="{{asset('uploads/avatar')}}/{{Auth::user()->profile->avatar}}" width="100" style="width: 100%;">
+            <img src="{{asset('uploads/avatar')}}/{{Auth::user()->profile->avatar}}" class="img-profile">
 
             @endif
+
+
+        </div>
+      </div>
+    </div>
+
+
+           
             <br><br>
 
             <form action="{{route('seeker.avatar')}}" method="POST" enctype="multipart/form-data">@csrf
@@ -43,7 +57,7 @@
 
         </div>
 
-<div class="col-md-4 mt-3">
+<div class="col-lg-4 mt-3">
 
 <div class="card mt-3">
                 <div class="card-header mt-0">Mise à jour du profile</div>
@@ -91,27 +105,29 @@
                                       <div class="error" style="color: red;">{{$errors->first('phone_number')}}</div>
                                        @endif
 
-                                         <div class="form-group">
-                                            <label for="experience" class="col-form-label">Experience</label>
-                                        <textarea class="form-control" name="experience">
-                                          {{ Auth::user()->Profile->experience }}
-                                        </textarea>
-                                        </div>
-                                           @if($errors->has('experience'))
-                                      <div class="error" style="color: red;">{{$errors->first('experience')}}</div>
-                                       @endif
-
-
                                         <div class="form-group">
-                                            <label for="bio" class="col-form-label"> </label>
-                                        <textarea class="form-control" name="bio">
-                                       {{Auth::user()->Profile->bio }}
-                                        </textarea>
-                                        </div>
+                        <label for="">Experience</label>
+                        <textarea name="experience" class="form-control">{{Auth::user()->profile->experience}}</textarea>
+                        @if($errors->has('experience'))
+                            <div class="error" style="color: red;">{{$errors->first('experience')}}</div>
+                        @endif
+                    </div>
+                                        
 
-                                           @if($errors->has('bio'))
-                                      <div class="error" style="color: red;">{{$errors->first('bio')}}</div>
-                                       @endif
+                                        
+
+        <div class="form-group">
+                        <label for="">Bio</label>
+                        <textarea name="bio" class="form-control">{{Auth::user()->profile->bio}}</textarea>
+                        @if($errors->has('bio'))
+                            <div class="error" style="color: red;">{{$errors->first('bio')}}</div>
+                        @endif
+                    </div>
+
+
+
+
+                                        
 
 
                 <button class="btn btn-success" type="submit">Validé</button>

@@ -9,10 +9,10 @@
 @section('content')
   
 
-
+<div class="container justify-content-center">
     <div class="row mt-5">
 
-        <div class="col-md-8">
+        <div class="col-md-10">
        
             <div class="card">
             <div class="card-header">Create a job</div>
@@ -34,6 +34,14 @@
             <div class="form-group">
                 <label for="description">Description:</label>
             <textarea name="description" id="summernote" class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }}" >{{ old('description') }}</textarea>
+
+{{--   <div class="form-group">
+<input id="description" type="hidden" name="description"  class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }}">
+  <trix-editor input="description">{{ old('description') }}</trix-editor>
+
+ --}}
+
+
             @if ($errors->has('description'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('description') }}</strong>
@@ -131,16 +139,21 @@
             <div class="form-group">
                 <label for="type">Type de contrat:</label>
                 <select class="form-control" name="type">
-                    <option value="fulltime">fulltime</option>
-                    <option value="parttime">parttime</option>
-                    <option value="casual">casual</option>
+                    <option value="CDI – Contrat à durée indéterminée">CDI – Contrat à durée indéterminée</option>
+                    <option value="CDD – Contrat à durée déterminée">CDD – Contrat à durée déterminée</option>
+                    <option value="CTT – Contrat de travail temporaire ou Intérim">CTT – Contrat de travail temporaire ou Intérim</option>
                 </select>
             </div>
+
+
+
+
+
             <div class="form-group">
                 <label for="status">Status:</label>
                 <select class="form-control" name="status">
-                    <option value="1">Enline</option>
-                    <option value="0">en-cours</option>
+                    <option value="1">En ligne</option>
+                    <option value="0">En-cours</option>
                 </select>
             </div>
             <div class="form-group">

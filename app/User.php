@@ -9,7 +9,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -54,6 +54,8 @@ public function profile(){
     }
 
 
-
+ public function favorites(){
+        return $this->belongsToMany(Job::class,'favourites','user_id','job_id')->withTimeStamps();
+    }
 
 }

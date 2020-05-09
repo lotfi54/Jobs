@@ -31,21 +31,21 @@
                 <p>Adresse: {{$job->address}}</p>
                 <p>Type d'offre : {{$job->type}}</p>
                 <p>Activité: {{$job->position}}</p>
-                <p>Date: {{$job->created_at->diffForHumans()}}</p>
+                <p>Date de publication: {{$job->created_at->diffForHumans()}}</p>
+                  <p>
+Date limite pour postuler:&nbsp;{{ date('F d, Y',strtotime($job->last_date))}}</p>
             </div>
         </div>
-        <div class="btn-applySingle mt-3">
+
+              <div class="btn-applySingle mt-3">
              @if(Auth::check()&&Auth::user()->role_id==3)
             @if(!$job->checkApplication())
-            <form action="{{route('apply',[$job->id])}}" method="POST">
-            @csrf 
-           
-                <button type="submit" class="btn btn-success">
-                    Postuler
-                </button>
-            </form>
+        <apply-component :jobid={{$job->id}}></apply-component>
             @endif 
+            <favorite-component :jobid={{$job->id}} :favorited={{$job->checkSaved()?'true':'false'}}></favorite-component>
             @endif 
+        </div>
+        
         </div>
     </div>
     </div>

@@ -12,14 +12,16 @@
 <div class="row">
 
    <div class="col-lg-3 mt-5">
+      <div class="d-flex justify-content-center ">
             @if(empty(Auth::user()->company->logo))
             <div class="text-center">
             <img class="text-center" src="{{asset('avatar/man.jpg')}}" width="100" style="width: 40%;">
           </div>
             @else
-            <img src="{{asset('uploads/logo')}}/{{Auth::user()->company->logo}}" width="100" style="width: 100%;">
+            <img src="{{asset('uploads/logo')}}/{{Auth::user()->company->logo}}" width="100" style="width: 40%;">
 
             @endif
+          </div>
             <br><br>
 
             <form action="{{route('company.company.logo')}}" method="POST" enctype="multipart/form-data">@csrf

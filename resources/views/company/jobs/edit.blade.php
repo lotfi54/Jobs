@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 
-@section('title','Profile')
+@section('title','Edit job')
 
 @push('css')
 
@@ -15,7 +15,7 @@
         <div class="col-md-8">
        
             <div class="card">
-            <div class="card-header">Mettre à jour un job</div>
+            <div class="card-header">Update job</div>
             <div class="card-body">
 
             <form action="{{route('company.job.update',[$jobs->id])}}" method="POST">@csrf
@@ -40,6 +40,31 @@
                 </span>
                  @endif
             </div>
+
+
+ {{--  <div class="form-group">
+    <label for="description">Description:</label>
+<input id="description" type="hidden" name="description"  class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }}" value="{{ old('description') }}{{ $jobs->description }}">
+  <trix-editor input="description"></trix-editor>
+
+
+
+
+            @if ($errors->has('description'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('description') }}</strong>
+                </span>
+                 @endif
+            </div> --}}
+
+
+
+
+
+
+
+
+
 
             <div class="form-group">
                 <label for="role">Role:</label>
@@ -131,9 +156,9 @@
 			<div class="form-group">
                 <label for="type">Type:</label>
                 <select class="form-control" name="type">
-                    <option value="fulltime"{{$jobs->type=='fulltime'?'selected':''}}>fulltime</option>
-                    <option value="partime"{{$jobs->type=='partime'?'selected':''}}>partime</option>
-                    <option value="casual"{{$jobs->type=='casual'?'selected':''}}>casual</option>
+                    <option value="CDI – Contrat à durée indéterminée"{{$jobs->type=='fulltime'?'selected':''}}>CDI – Contrat à durée indéterminée</option>
+                    <option value="CDD – Contrat à durée déterminée"{{$jobs->type=='partime'?'selected':''}}>CDD – Contrat à durée déterminée</option>
+                    <option value="CTT – Contrat de travail temporaire"{{$jobs->type=='casual'?'selected':''}}>CTT – Contrat de travail temporaire ou Intérim</option>
                 </select>
             </div>
 
@@ -173,6 +198,9 @@
   $(function () {
     $('select').selectpicker();
 });
+
+  var element = document.querySelector("#description")
+element.editor
 </script>
 @endpush
 

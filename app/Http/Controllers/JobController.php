@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\Job;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
@@ -16,8 +18,10 @@ class JobController extends Controller
      */
     public function index()
     {
-       $jobs = Job::all(); 
-       return view('welcome',compact('jobs')); 
+       $jobs = Job::latest()->limit(10)->where('status',1)->get(); 
+       // $companies = Company::latest()->limit(4)->get();
+       $companies = Company::get()->random(4);
+       return view('welcome',compact('jobs','companies')); 
     }
 
     /**
@@ -98,6 +102,39 @@ class JobController extends Controller
     }
 
 
+
+public function allJobs(Request $request){
+
+    $keyword = $request->get('title');
+       $type = $request->get('type');
+       $category = $request->get('category_id');
+       $address = $request->get('address');
+       if($keyword||$type||$category||$address){
+        $jobs = Job::where('title','LIKE','%'.$keyword.'%')
+                ->orWhere('type',$type)
+                ->orWhere('category_id',$category)
+                ->orWhere('address',$address)
+                ->paginate(10);
+                return view('job.alljobs',compact('jobs'));
+       }else{
+
+            $jobs = Job::latest()->orderBy('created_at', 'desc')->paginate(10);
+            
+
+    return  view('job.alljobs',compact('jobs')); 
+}
+
+}
+
+ public function searchJobs(Request $request){
+       
+        $keyword = $request->get('keyword');
+        $users = Job::where('title','like','%'.$keyword.'%')
+                ->orWhere('position','like','%'.$keyword.'%')
+                ->limit(5)->get();
+        return response()->json($users);
+
+    }
 
 
 

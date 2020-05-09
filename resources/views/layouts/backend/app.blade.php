@@ -9,10 +9,10 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-  <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+{{--   <link href="{{ asset('css/style.css') }}" rel="stylesheet"> --}}
     <!-- Scripts -->
    {{--  <script src="{{ asset('js/app.js') }}" defer></script> --}}
-
+   <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -53,13 +53,12 @@
 <link href="{{ asset('assets/backend/css/styles.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/backend/css/responsive.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/backend/css/toastr.min.css') }}" rel="stylesheet">
-
+<link href="{{ asset('assets/backend/css/trix.css') }}" rel="stylesheet">
 <script src="{{ asset('assets/backend/js/vendor/modernizr-2.8.3.min.js') }}"></script>
-
+   
 @stack('css')
 </head>
 <body>
-
 
 
 
@@ -124,6 +123,7 @@
 <script src="{{ asset('assets/backend/js/bar-chart.js') }}"></script>
 
 <script src="{{ asset('assets/backend/js/maps.js') }}"></script>
+<script src="{{ asset('assets/backend/js/trix.js') }}"></script>
 
 
 

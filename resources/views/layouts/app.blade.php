@@ -10,8 +10,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+   
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -29,7 +30,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <div id="app">
+   
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -53,6 +54,8 @@
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
 
+
+
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('employer.register') }}">{{ __('Entreprise') }}</a>
                             </li>
@@ -61,14 +64,46 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Candidat') }}</a>
                                 </li>
+
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+
+                                    @if(Auth::user()->role_id=='2')
+                                 
+                                    
+                           <a href="{{route('company.dashboard')}}"><button class="btn btn-secondary">{{Auth::user()->company->cname}}</button></a>
+                        </li>
+
+                           
+                        </li>
+                            
+                              
+
+                                @elseif(Auth::user()->role_id=='3')
+                                     
+                        </li>
+                                    @else
+                                    {{Auth::user()->name}}
+                                @endif
+
+                                   <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                             
+                                        @if(Auth::user()->role_id=='2')
+                                     
+
+                                    <li>
+
+                        
+
+                                     @elseif(Auth::user()->role_id=='3')
+                         
+                    <a href="{{route('seeker.dashboard')}}"><button class="btn btn-secondary">{{Auth::user()->name}}</button></a>
+                        </li>
+                                    @endif
+
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -85,10 +120,11 @@
                 </div>
             </div>
         </nav>
-
+ <div id="app">
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
