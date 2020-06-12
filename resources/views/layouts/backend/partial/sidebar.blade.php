@@ -70,18 +70,18 @@
                             </li>  
 
                             <li class="{{ Request::is('company/jobs') ? 'active' : '' }}">
-                                <a href="{{route('company.jobs')}}" aria-expanded="true"><i class="ti-dashboard"></i><span>Jobs</span></a>
+                                <a href="{{route('company.jobs')}}" aria-expanded="true"><i class="ti-briefcase"></i><span>Jobs</span></a>
 
                             </li> 
 
                             <li class="{{ Request::is('company/applicant') ? 'active' : '' }}">
-                                <a href="{{route('company.applicant')}}" aria-expanded="true"><i class="ti-dashboard"></i><span>Applicants</span></a>
+                                <a href="{{route('company.applicant')}}" aria-expanded="true"><i class="ti-file"></i><span>Candidatures</span></a>
                                
                             </li> 
                            
 
  <li class="{{ Request::is('company/profile') ? 'active' : '' }}">
-                                <a href="{{route('company.profile')}}" aria-expanded="true"><i class="ti-dashboard"></i><span>Profile</span></a>
+                                <a href="{{route('company.profile')}}" aria-expanded="true"><i class="ti-user"></i><span>Profile</span></a>
                                
                             </li>  
 
@@ -97,7 +97,7 @@
                                     <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Déconnexion') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST">

@@ -12,7 +12,7 @@
 {{--   <link href="{{ asset('css/style.css') }}" rel="stylesheet"> --}}
     <!-- Scripts -->
    {{--  <script src="{{ asset('js/app.js') }}" defer></script> --}}
-   <script src="{{ asset('js/app.js') }}" defer></script>
+   
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -23,7 +23,7 @@
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fontawesome-iconpicker/3.2.0/js/fontawesome-iconpicker.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+  <link rel="stylesheet" type="text/css" href="trix.css">
 
 <link href="{{ asset('assets/backend/css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -125,12 +125,12 @@
 <script src="{{ asset('assets/backend/js/maps.js') }}"></script>
 <script src="{{ asset('assets/backend/js/trix.js') }}"></script>
 
-
-
+  <script type="text/javascript" src="trix.js"></script>
 
 <script src="{{ asset('assets/backend/js/scripts.js') }}"></script>
 <script src="{{ asset('assets/backend/js/toastr.min.js') }}"></script>
  {!! Toastr::message() !!}
+<script src="{{ asset('js/app.js') }}" defer></script>
  @stack('js')
 </body>
 </html>

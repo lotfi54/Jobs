@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Route::get('/jobs','allJobController@index')->name('jobs');
+// // Route::get('/task','TaskController@index');
+
+// Route::post('/application/{id}','JobController@apply')->name('apply');

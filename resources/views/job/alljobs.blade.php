@@ -1,11 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.frontend.app-alljobs')
 
 @section('content')
 <div class="container">
-    <div class="row">
-       <form action="{{route('alljobs')}}" method="GET">
 
-    <div class="form-inline mt-5">
+<div class="row">
+  <div class="col-lg-3 col-md-12 col-sm-12">
+<form action="{{route('alljobs')}}" method="GET">
+     <div class="form mt-5">
         <div class="form-group">
             
             <input type="text" name="position" class="form-control" placeholder="Mot clé">&nbsp;&nbsp;&nbsp;
@@ -41,50 +42,36 @@
             <input type="submit" class="btn btn-search btn-primary btn-block" value="Search">
 
         </div>
-    </div>    <br>
-
-    </form>
-  </div>
-  <div class="row">
-        <h1 class="text-left">Job recents</h1>
-       <table class="table">
-           <thead>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-           </thead>
-           <tbody>
-            @foreach($jobs as $job)
-            <tr>
-               <td>
-                     @if(empty($job->company->logo))
-            <img  src="{{asset('avatar/man.jpg')}}" width="80">
-            @else
-            <img  src="{{asset('uploads/logo')}}/{{$job->company->logo}}" width="80" >
-
-            @endif
-               </td>
-               <td>Position : {{$job->position}}
-                <br><i class="fa fa-clock-o"></i>&nbsp;{{$job->type}}</td>
-               <td><i class="fa fa-map-marker"></i>&nbsp;Category : {{$job->category->name}}</td>
-               <td><i class="fa fa-globe"></i>&nbsp;Date : {{$job->created_at->diffForHumans()}}</td>
-               <td>
-                <a href="{{route('job.show',[$job->id,$job->slug])}}">
-                <div class="btn-apply">
-                  <p>Postuler</p>
-                </div>
-              </a>
-              </td>
-           </tr>
-           </tbody>
-           @endforeach
-       </table>
-       {{$jobs->links()}}
-       
     </div> 
+  </form>
+  </div>
 
+
+ <div class=" col-12 col-lg-9 col-md-12 col-sm-12 mt-5">
+   <div class="row">
+     @if(count($jobs)>0)
+     @foreach($jobs as $job)
+     <div class="card job ">
+ 
+  <div class="card-body body-jobber">
+    <h5 class="card-type" class="card-title">{{$job->position}}</h5>
+    <p class="card-text">{{$job->category->name}}</p>
+    <p class="card-text">{{$job->type}}</p>
+    <p class="card-text">{{$job->created_at->diffForHumans()}}</p>
+  </div>
+ 
+  <a href="{{route('job.show',[$job->id,$job->slug])}}" class="btn-plus d-flex justify-content-center"><p>Postuler</p></a>
+
+</div>
+@endforeach
+@else
+            Il n'y pas encore de job
+            @endif
+   </div>
+  </div>
+          {{$jobs->links()}}
+</div>
 </div>
 
 @endsection
+

@@ -20,7 +20,7 @@ class JobController extends Controller
     {
 
 
-$jobs = Job::where('user_id',auth()->user()->id)->orderBy('last_date', 'desc')->paginate(6);
+        $jobs = Job::where('user_id',auth()->user()->id)->orderBy('created_at', 'desc')->paginate(6);
        
      
         return view('company.jobs.index',compact('jobs'));
@@ -60,14 +60,11 @@ $jobs = Job::where('user_id',auth()->user()->id)->orderBy('last_date', 'desc')->
             'type'=>request('type'),
             'status'=>request('status'),
             'last_date'=>request('last_date')
-          
-         
-
 
         ]);
 
           Toastr::success('Le job à été crée', 'Success');
-return redirect()->route('company.job.create');
+        return redirect()->route('company.jobs');
     }
 
     /**
@@ -89,41 +86,37 @@ return redirect()->route('company.job.create');
     }
     
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         $jobs = Job::findOrFail($id); 
         return view('company.jobs.edit',compact('jobs'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function update(JobPostRequest $request, $id)
     {
         $job = Job::findOrFail($id);
         $job->update($request->all());
-         Toastr::success('Mise à jours réussi', 'Success');
+        Toastr::success('Le job à été modifié', 'Success');
         return redirect()->route('company.jobs');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
+
     public function destroy($id)
     {
-        //
+
+         $jobs = Job::find($id);
+         $jobs->delete();
+
+        Toastr::success('Le job à été supprimer', 'Success');
+        return redirect()->route('company.jobs');
+       
     }
+
+
 }
+
+
+

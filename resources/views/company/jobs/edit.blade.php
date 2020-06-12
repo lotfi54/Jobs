@@ -3,7 +3,7 @@
 @section('title','Edit job')
 
 @push('css')
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.css" integrity="sha256-yebzx8LjuetQ3l4hhQ5eNaOxVLgqaY1y8JcrXuJrAOg=" crossorigin="anonymous" />
 @endpush
 
 @section('content')
@@ -18,7 +18,9 @@
             <div class="card-header">Update job</div>
             <div class="card-body">
 
-            <form action="{{route('company.job.update',[$jobs->id])}}" method="POST">@csrf
+            <form action="{{route('company.job.update',[$jobs->id])}}" method="POST">
+
+            @csrf
 
             <div class="form-group">
                 <label for="title">Intitulé du job:</label>
@@ -33,7 +35,8 @@
             
             <div class="form-group">
                 <label for="description">Description:</label>
-            <textarea name="description" id="summernote" class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }}" >{{ old('description') }}{{ $jobs->description }}</textarea>
+          <input id="description" type="hidden" name="description" value="{{$jobs->description}}">  
+  <trix-editor input="description"></trix-editor>
             @if ($errors->has('description'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('description') }}</strong>
@@ -68,9 +71,8 @@
 
             <div class="form-group">
                 <label for="role">Role:</label>
-            <textarea name="roles"  class="form-control {{ $errors->has('roles') ? ' is-invalid' : '' }}" >{{old('roles')}}
-{{ $jobs->title }}
-            </textarea>
+             <input id="roles" type="hidden" name="roles" value="{{$jobs->roles}}">  
+  <trix-editor input="roles"></trix-editor>
             @if ($errors->has('roles'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('roles') }}</strong>
@@ -194,13 +196,6 @@
 @endsection
 
 @push('js')
-<script type="text/javascript">
-  $(function () {
-    $('select').selectpicker();
-});
-
-  var element = document.querySelector("#description")
-element.editor
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.js" integrity="sha256-2D+ZJyeHHlEMmtuQTVtXt1gl0zRLKr51OCxyFfmFIBM=" crossorigin="anonymous"></script>
 @endpush
 

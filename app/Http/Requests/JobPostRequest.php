@@ -27,8 +27,12 @@ class JobPostRequest extends FormRequest
             'title'=>'required|min:10',
             'description'=>'required',
             'roles'=>'required',
-            'address'=>'required',
+            'category'=>'required',
             'position'=>'required',
+            'address'=>'required',
+            'type'=>'required',
+            'position'=>'required',
+            'status'=>'required',
             'last_date'=>'required',
            
         ];

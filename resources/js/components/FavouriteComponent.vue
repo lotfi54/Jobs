@@ -1,7 +1,7 @@
 <template>
     <div>
         
-            <button v-if="show" @click.prevent="unsave()" class="btn btn-primary mt-3" style="width: 100%;">Anuller</button>
+            <button v-if="show" @click.prevent="unsave()" class="btn btn-primary mt-3" style="width: 100%;">Annuler</button>
 
     <button v-else @click.prevent="save()"   class="btn btn-dark mt-3" style="width: 100%;">Sauvegarder</button>
         

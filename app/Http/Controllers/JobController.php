@@ -16,13 +16,22 @@ class JobController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
+  
+
     public function index()
     {
-       $jobs = Job::latest()->limit(10)->where('status',1)->get(); 
-       // $companies = Company::latest()->limit(4)->get();
-       $companies = Company::get()->random(4);
-       return view('welcome',compact('jobs','companies')); 
+       $jobs = Job::latest()->limit(6)->where('status',1)->get(); 
+
+        return view('welcome', ['jobs' => $jobs]);
     }
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -104,13 +113,29 @@ class JobController extends Controller
 
 
 public function allJobs(Request $request){
+  //front search
+        $search = $request->get('search');
+        $address = $request->get('address');
+        if($search && $address){
+           $jobs = Job::where('position','LIKE','%'.$search.'%')
+                    ->orWhere('title','LIKE','%'.$search.'%')
+                    ->orWhere('type','LIKE','%'.$search.'%')
+                    ->orWhere('address','LIKE','%'.$address.'%')
+                    ->paginate(20);
 
-    $keyword = $request->get('title');
+            return view('job.alljobs',compact('jobs'));
+
+        }
+
+
+
+
+       $keyword = $request->get('position');
        $type = $request->get('type');
        $category = $request->get('category_id');
        $address = $request->get('address');
        if($keyword||$type||$category||$address){
-        $jobs = Job::where('title','LIKE','%'.$keyword.'%')
+        $jobs = Job::where('position','LIKE','%'.$keyword.'%')
                 ->orWhere('type',$type)
                 ->orWhere('category_id',$category)
                 ->orWhere('address',$address)
@@ -118,11 +143,11 @@ public function allJobs(Request $request){
                 return view('job.alljobs',compact('jobs'));
        }else{
 
-            $jobs = Job::latest()->orderBy('created_at', 'desc')->paginate(10);
-            
+            $jobs = Job::latest()->paginate(10);
+            return view('job.alljobs',compact('jobs'));
+    }
 
-    return  view('job.alljobs',compact('jobs')); 
-}
+
 
 }
 

@@ -1,0 +1,87 @@
+body{
+  padding: 0; 
+  margin: 0; 
+  box-sizing: content-box;
+}
+
+
+
+a {
+  text-decoration: none!important;
+}
+
+
+
+
+
+
+.card.job {
+  flex-wrap: wrap;
+  flex-direction: row;
+  display: flex;
+   width: 46%; 
+  /* height: 40%; */
+  padding: 20px;
+  margin: 15px;
+  background: #fff;
+  justify-content: center;
+  border: none;
+  border-radius: 0%;
+  /*box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0), 0 2px 10px 0 rgba(0, 0, 0, 0.12);*/
+  transition: .2s easeIn;
+  border: 1px solid rgb(0,0,0,0.12);
+ /* border-bottom:  1px solid black;*/
+}
+
+.card.job:hover {
+transform: scale(1.025);
+}
+
+
+.btn-plus p {
+    padding: 13px;
+}
+
+.btn-plus.d-flex.justify-content-center p {
+    color: #000;
+   /* background: #000;*/
+   border:1px solid rgb(0,0,0,0.12);
+    font-weight: 600; 
+    font-family:Poppins; 
+}
+
+
+.btn-plus.d-flex.justify-content-center:hover p {
+    color: #ff5200;
+    /*background: #000;*/
+}
+
+h5.card-type {
+    font-size: 14px;
+    color: #ff5200;
+    font-family: Poppins;
+    font-weight: 600;
+}
+
+.card.jobber {
+    border-raduis: 0;
+    border: none;
+}
+
+
+
+.card-header.header-jobber {
+  background: none;
+    font-size: 20px;
+    font-family: Poppins;
+    font-weight: 600;
+}
+
+.card-body.body-jobber {
+    text-align: justify;
+    font-size: 13px;
+    font-family: Poppins;
+    padding: -3px;
+    width: 100%;
+    font-weight: 600;
+}

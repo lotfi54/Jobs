@@ -1,0 +1,376 @@
+
+
+
+@media (max-width: 760px) {
+  .swiper-button-next {
+    right: 20px;
+    transform: rotate(90deg);
+  }
+
+  .swiper-button-prev {
+    left: 20px;
+    transform: rotate(90deg);
+  }
+
+  .card.job {
+      background: #fff;
+      border-radius: 0rem;
+      /* width: 45rem; */
+      height: 114px;
+  }
+
+  .swiper-slide {
+      flex-shrink: 0;
+      width: 100%;
+      height: 275%;
+      position: relative;
+      transition-property: transform;
+  }
+  a.go-job {
+      width: 11%;
+      height: 102%;
+      background: #000;
+      padding: 9px;
+      color: #fff;
+      position: absolute;
+      top: -1%;
+      left: 89%;
+  }
+
+  .card-job {
+      
+      flex-direction: column;
+      display: flex;
+      width: 99%;
+      /* height: 40%; */
+      /* padding: 20px; */
+      background: #fff;
+      justify-content: center;
+    }
+  .card-job-one {
+      width: 24%;
+      height: 257px;
+      background-color: aquamarine;
+      text-align: center;
+      padding: 10px;
+      margin: 10px;
+  }
+
+
+  .card-title {
+      font-size: 15px;
+      font-family: Poppins;
+      margin-bottom: .75rem;
+      text-align: left;
+      font-weight: 600;
+      width: 92%;
+      /* margin-left: -10px; */
+    }
+    
+    .localisation {
+      text-align: left;
+      font-size: 17px;
+      font-family: Poppins;
+      margin-top: 17px;
+    }
+
+    .go-job{
+      writing-mode: vertical-rl;
+      text-orientation: sideways;
+    }
+    img.arrow-job {
+      width: 28px;
+     
+      color: #fff;
+      padding: 2px;
+      transform: rotate(90deg);
+      display: initial;
+  }
+
+    
+
+  a.go-job {
+      text-decoration: none;
+      color: #fff;
+  }
+
+  a.go-job:hover {
+      text-decoration: none;
+      color: #6decb9;
+  }
+
+  .footer {
+      width: 100%;
+      height: 7%;
+      background:#ECECEB;
+      position: absolute;
+      top: 94%;
+      z-index: 1;
+  }
+
+
+  .menu-left-bas {
+      width: 13%;
+      height: 100%;
+      position: absolute;
+      background: #000;
+      z-index: 2;
+      top: 0%;
+      display: flex;
+    }
+    
+    span.swiper-pagination-current {
+      font-size: 21px;
+      font-family: Poppins;
+      color: #fff;
+      font-weight: 100;
+    }
+    
+    span.swiper-pagination-total {
+      font-family: Poppins;
+      font-size: 21PX;
+      color: #fff;
+      font-weight: 200;
+    }
+    
+    .swiper-pagination.swiper-pagination-fraction {
+      bottom: 24%;
+      color: #fff;
+      font-size: 23px;
+    }
+
+
+    .container-fluid.title-job {
+      top: 1%;
+      position: absolute;
+      /* left: -38%; */
+      font-size: 28px;
+      font-family: Poppins;
+      text-transform: uppercase;
+      color: #f4f4f4;
+      text-align: left;
+    }
+    .row.all-job {
+      padding: 0px;
+      /* text-align: left; */
+      justify-content: center;
+  }
+
+  a.row.all-job {
+    color: red;
+  }
+
+
+
+  .title-job {
+      position: absolute;
+      z-index: 1;
+      top: 1%;
+      left: 4%;
+  }
+
+  .title-job p {
+      font-size: 20px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color:rgb(0,0,0,0.9);
+  }
+
+
+  
+.swiper-button-next.next-button {
+  position: absolute;
+  left: 88.7%;
+  top: 96.9%;
+  outline: 0;
+  background: black;
+  width: 9%;
+  height: 5%;
+}
+
+.swiper-button-next img {
+  width: 30px;
+  height: 30px;
+}
+
+
+.swiper-button-prev.prev-button {
+  position: absolute;
+  left: 76.7%;
+  top: 96.9%;
+  outline: 0;
+  background: black;
+  width: 9%;
+  height: 5%;
+}
+
+.swiper-button-prev img {
+  width: 30px;
+  height: 30px;
+  color: #000;
+}
+
+.haut-job {
+  display: flex;
+  width: 24%;
+  position: absolute;
+  z-index: 2;
+  top: 0%;
+  left: 64%;
+}
+
+
+.info-company {
+  position: absolute;
+  left: 113%;
+  font-size: 25px;
+  font-family: Poppins;
+  font-weight: 700;
+  top: 17%;
+}
+
+
+
+
+.address-company {
+  position: absolute;
+  left: 135%;
+  width: 308%;
+  top: 60%;
+  font-family: Poppins;
+  font-weight: 500;
+  display: none;
+}
+
+
+.so {
+  width: 30px;
+  height: 15px;
+  z-index: 2;
+  position: absolute;
+  left: 47%;
+  top: 95.5%;
+}
+
+.so2 {
+  width: 30px;
+  height: 15px;
+  z-index: 2;
+  position: absolute;
+  left: 56%;
+  top: 95.5%;
+}
+.container-blog {width: 87%;height: auto;margin-top: -13px; display:flex;
+flex-direction: column;}
+
+img.card-img-blog {
+  width: 100%;
+}
+
+.card-body-blog {
+  position: absolute;
+  top: 41%;
+  color: white;
+  width: 72%;
+  left: 13%;
+}
+
+.card.blog {
+  height: 232px;
+  border: none;
+}
+
+.container-blog {
+  width: 100%;
+  /* background: red; */
+  display: flex;
+}
+
+
+/* .container-blog {width: 87%;height: auto;margin-top: -13px;} */
+
+img.img-blog {
+  width: 100%;
+  object-fit: cover;
+  height: 102%;
+}
+
+h5.card-title-blog {
+  position: absolute;
+  top: 76%;
+  text-align: initial;
+  color: #fff;
+  font-size: 16px;
+  font-family: Poppins;
+  left: 3%;
+  width: 73%;
+  display: initial;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.3, 1);
+}
+
+.number h2 {
+  position: absolute;
+  /* background: red; */
+  width: 9%;
+  font-size: 139px;
+  z-index: 1;
+  left: 0%;
+  top: 62%;
+  font-family: Poppins;
+  font-weight: 800;
+  color: rgb(0,0,0,0.16);
+  display: none;
+}
+
+.number2 h2 {
+  position: absolute;
+  /* background: red; */
+  width: 9%;
+  font-size: 139px;
+  z-index: 1;
+  left: 34.5%;
+  top: 62%;
+  font-family: Poppins;
+  font-weight: 800;
+  color: rgb(0,0,0,0.16);
+  display: none;
+}
+
+.number3 h2 {
+  position: absolute;
+  /* background: red; */
+  width: 9%;
+  font-size: 139px;
+  z-index: 1;
+  left: 68.2%;
+  top: 62%;
+  font-family: Poppins;
+  font-weight: 800;
+  color: rgb(0,0,0,0.16);
+  display: none;
+}
+
+.container.home-company h1 {
+  font-size: 58px;
+  font-family: Poppins;
+  font-weight: 900;
+  text-transform: uppercase;
+  width: 100%;
+}
+.container.home-company {
+  position: absolute;
+  z-index: 2;
+  left: -1%;
+  top: 36%;
+  width: 102%;
+}
+img.cover {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  position: absolute;
+  top: -7%;
+}
+}
+
+

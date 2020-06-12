@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Route::get('/jobs', 'AllJobController@index');
 Route::get('/', 'JobController@index');
 
 // Auth::routes();
@@ -25,6 +25,10 @@ Route::get('/job/{id}/{job}','JobController@show')->name('job.show');
 
 
 Route::post('/application/{id}','JobController@apply')->name('apply');
+
+
+
+
 
 Route::get('/alljobs','JobController@allJobs')->name('alljobs');
 
@@ -52,7 +56,6 @@ Route::post('employer/register','EmployerRegisterController@employerRegister')->
     Route::get('dashboard','DashboardController@index')->name('dashboard');
 
  
-    
 
    Route::get('profile','userController@index')->name('profile');
 
@@ -83,6 +86,8 @@ Route::get('user/jobs/create','JobController@create')->name('job.create');
 Route::post('user/jobs/create','JobController@store')->name('job.store');
 
 Route::get('/jobs/{id}/edit','JobController@edit')->name('job.edit');
+
+Route::delete('/jobs/{id}/supp','JobController@destroy')->name('job.supp');
 
 Route::post('/jobs/{id}/edit','JobController@update')->name('job.update');
 
