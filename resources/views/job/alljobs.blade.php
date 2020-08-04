@@ -2,52 +2,55 @@
 
 @section('content')
 <div class="container">
-
-<div class="row">
-  <div class="col-lg-3 col-md-12 col-sm-12">
+<div class="title-job text-center mb-3"><h1>Découvrez les offres d’emploi</h1></div>
 <form action="{{route('alljobs')}}" method="GET">
-     <div class="form mt-5">
-        <div class="form-group">
-            
-            <input type="text" name="position" class="form-control" placeholder="Mot clé">&nbsp;&nbsp;&nbsp;
-        </div>
-        <div class="form-group">
-            <label>Employment &nbsp;</label>
-            <select class="form-control" name="type">
-                    <option value="">-select-</option>
-                    <option value="fulltime">fulltime</option>
-                    <option value="parttime">parttime</option>
-                    <option value="casual">casual</option>
-                </select>
-                &nbsp;&nbsp;
-        </div>
-        <div class="form-group">
-            <label>category</label>
-            <select name="category_id" class="form-control">
-                <option value="">-select-</option>
+
+  <div class="form-row">
+    <div class="col-md-3 mb-3">
+      
+      <input type="text" name="position" class="form-control" placeholder="Le job de vos rêves ?">&nbsp;&nbsp;&nbsp;
+  
+    </div>
+    <div class="col-md-3 mb-3">
+
+      <input type="text" name="address" class="form-control" placeholder="ou ?">&nbsp;&nbsp;
+      
+    </div>
+
+    <div class="col-md-2 mb-3">
+    <select name="category_id" class="form-control">
+                <option value="">Secteur</option>
 
                     @foreach(App\Category::all() as $cat)
                         <option value="{{$cat->id}}">{{$cat->name}}</option>
                     @endforeach
                 </select>
-                &nbsp;&nbsp;
-        </div>
+    </div>
 
-        <div class="form-group">
-            <label>address</label>
-            <input type="text" name="address" class="form-control" placeholder="address">&nbsp;&nbsp;
-        </div>
-        
-        <div class="form-group">
-            <input type="submit" class="btn btn-search btn-primary btn-block" value="Search">
+    <div class="col-md-2 mb-3">
+    <select class="form-control" name="type">
+                    <option value="">Contrat</option>
+                    <option value="fulltime">fulltime</option>
+                    <option value="parttime">parttime</option>
+                    <option value="casual">casual</option>
+                </select>
+    </div>
 
-        </div>
-    </div> 
-  </form>
+    <div class="col-md-2 mb-3">
+    <input type="submit" class="btn btn-search btn-primary btn-block" value="Search">
+    </div>
   </div>
 
+  </div>
+</form>
 
- <div class=" col-12 col-lg-9 col-md-12 col-sm-12 mt-5">
+</div>
+
+
+
+<div class="container">
+
+ <div class=" col-12  col-md-12 col-sm-12">
    <div class="row">
      @if(count($jobs)>0)
      @foreach($jobs as $job)

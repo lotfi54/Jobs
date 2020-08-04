@@ -1,6 +1,24 @@
 @extends('layouts.frontend.app-alljobs')
 
 @section('content')
+
+
+
+
+<div class="Banner" @if(empty($job->company->cover_photo)) style="background-image: url({{asset('cover/ 
+tumblr-image-sizes-banner.png')}});" @else 
+
+ style="background-image: url({{asset('uploads/coverphoto')}}/{{$job->company->cover_photo}});" @endif>
+
+
+</div>
+	<div class=container-job>
+		<h1 class=Banner-title>LOREM</h1>
+		<P class=Banner-description>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem mollitia dolores modi quisquam quos libero commodi cupiditate quae officia! Placeat cum ipsa laudantium distinctio quod aut iste? Iusto, nisi distinctio?</P>
+	</div>
+</div>
+</div>
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-8 mb-3">
@@ -38,7 +56,7 @@ Date limite pour postuler:&nbsp;{{ date('F d, Y',strtotime($job->last_date))}}</
             </div>
         </div>
 
-              <div class="btn-applySingle mb-3">
+              <div class="btn-applySingle mb-4">
              @if(Auth::check()&&Auth::user()->role_id==3)
             @if(!$job->checkApplication())
         <apply-component :jobid={{$job->id}}></apply-component>

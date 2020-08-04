@@ -1,7 +1,7 @@
 <template>
     <div>
         <form @submit="formSubmit">
-             <button v-if="show" type="submit" class="btn btn-success" style="width: 100%;">Apply</button>
+             <button v-if="show" type="submit" class="apply-btn" style="width: 50%;">Apply</button>
         
          <div v-else class="alert alert-success">
             Votre candidature à été envoyer

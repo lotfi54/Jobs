@@ -146,6 +146,27 @@
             </div>
         </nav>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
     <div id="app">
     <div class="py-4">
         @yield('content')
