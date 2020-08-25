@@ -14,6 +14,12 @@ class Job extends Model
 
 protected $fillable = ['user_id','company_id','title','slug','description','roles','category_id','position','address','type','status','last_date'];
 
+protected $appends= ['human_created_at'];
+    
+public function getHumanCreatedAtAttribute()  {
+    return $this->created_at->diffForHumans();  
+}
+
     public function getRoutekeyName()  {
     	return 'slug'; 
     }

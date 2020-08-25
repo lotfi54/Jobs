@@ -1,0 +1,181 @@
+
+
+
+
+.card {
+	display: inline-block;
+	width: 90%;
+	max-width: 20rem;
+	margin: 1rem;
+	font-size: 1rem;
+	text-decoration: none;
+    overflow: hidden;
+    border:0!important;
+    border-radius: 0!important;
+	box-shadow: 0 0 1.5rem -1rem rgba(0,0,0,0.5);
+	transition: transform 0.1s ease-in-out, box-shadow 0.1s;
+}
+
+.card:hover {
+	transform: translateY(-0.5rem) scale(1.0125);
+	box-shadow: 0 0.2em 1.8rem -1rem rgba(0,0,0,0.5);
+}
+
+.card-description {
+	display: block;
+	padding: 1em 0.5em;
+	color: #515151;
+	text-decoration: none;
+}
+
+.card-description > h2 {
+	margin: 0 0 0.5em;
+}
+
+.card-description > p {
+	margin: 0;
+}
+
+.card-img-top {
+    width: 100%;
+    border-top-left-radius:0!important;
+    border-top-right-radius: 0!important;
+}
+
+p.company {
+    font-size: 19px;
+    font-weight: 300;
+    font-family: Poppins;
+}
+
+p.company-body {
+    font-size: 14px;
+    font-weight: 300;
+    font-family: Poppins;
+}
+
+
+.card-title{
+    font-size: 16px;
+    font-weight: 600;
+    font-family: Poppins;
+}
+
+
+.padder {
+	padding-left: 35px;
+	padding-right: 35px;
+  }
+  .navbar-brand {
+	font-family: Poppins;
+	color: black!important;
+	font-size: 50px;
+  -webkit-transition: all .2s;
+	 -moz-transition: all .2s;
+		  transition: all .2s;
+  }
+  .brand-shrink {
+	font-size: 44px;
+  -webkit-transition: all .2s;
+	 -moz-transition: all .2s;
+		  transition: all .2s;
+  }
+  .container-fluid {
+	margin-top: 100px;
+	  max-width: 1250px;
+  }
+ 
+  .navbar {
+	border-radius: 0;
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	
+  }
+
+  .row.align-items-center {
+    margin: 91px;
+}
+  
+  .affix {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 1030;
+  }
+  .header {
+  -webkit-transition: height .2s;
+	 -moz-transition: height .2s;
+		  transition: height .2s;
+		  height: 101px;
+  }
+  .header.shrink {
+  -webkit-box-shadow: 0px -44px 65px 2px rgba(0,0,0,0.51);
+	 -moz-box-shadow: 0px -44px 65px 2px rgba(0,0,0,0.51);
+		  box-shadow: 0px -44px 65px 2px rgba(0,0,0,0.51);
+  -webkit-transition: all .2s;
+	 -moz-transition: all .2s;
+		  transition: all .2s;
+			  height: 78px;
+  }
+  
+  /* fixed to top styles */
+  .affix.navbar .nav-item>a, 
+  .affix.navbar .navbar-brand {
+	  color: black;
+  }
+  .nav-link {
+	  display: block;
+	  padding: .6rem 2rem;
+	  letter-spacing: 2px;
+	  text-transform: uppercase;
+	  font-weight: 600;
+  }
+  
+  /* navbar collapsing */
+  @media(max-width:34em) {
+	  .navbar .navbar-nav>.nav-item {
+		  float: none;
+		  margin-left: .1rem;
+	  }
+	  .navbar .navbar-nav {
+		  float:none !important;
+	  }
+	  .navbar .collapse.in, .navbar .collapsing  {
+		  clear:both;
+	  }
+  }
+  
+
+  #left-side{
+  position: fixed;
+  top: 20px;
+  width: 250px;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  background-color: #fff;
+  padding: 10px 0px;
+  border-right: 1px dashed #999;
+  }
+  ul{
+    padding: 0;
+	list-style-type: none;
+  } 
+    li
+      a{
+        display: block;
+        padding: 0 20px;
+     
+	  }
+#right-side{
+  margin-left: 250px;
+  box-sizing: border-box;
+  background-color: #8e8;
+}
+#page-container{
+  margin-top: 20px; 
+
+}

@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\Job;
 
-class JobController extends Controller
+use Illuminate\Http\Request;
+
+class WelcomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,13 +13,7 @@ class JobController extends Controller
      */
     public function index()
     {
-        // $jobs = Job::latest()->limit(6)->where('status',1)->get();
-       
-        $jobs = Job::with(['company','category'])->latest()->where('status',1)->get();
-     foreach($jobs as $job) {
-         $job->setAttribute('path','/job/'.$job->slug);
-     }
-        return response()->json($jobs, 200); 
+        return view('welcome');
     }
 
     /**
@@ -49,19 +43,9 @@ class JobController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Job $job)
+    public function show($id)
     {
-        
-        return response()->json([
-         'id'=>$job->id,
-         'title'=>$job->title,
-         'human_created_at'=>$job->human_created_at,
-         'type'=>$job->type,
-         'cname'=>$job->company->cname,
-         'address'=>$job->company->address,
-         'image'=>$job->company->cover_photo,
-         'desc'=>$job->description,
-        ]);
+        //
     }
 
     /**

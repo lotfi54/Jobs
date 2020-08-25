@@ -12,7 +12,7 @@
 
             <div class="col-md-10">
 
-                <div class="card">
+                <div class="card-create">
                     <div class="card-header">Creation d'un job</div>
                     <div class="card-body">
 

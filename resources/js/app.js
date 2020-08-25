@@ -8,30 +8,60 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('apply-component', require('./components/ApplyComponent.vue').default);
-Vue.component('favorite-component', require('./components/FavouriteComponent.vue').default);
-Vue.component('search-component', require('./components/SearchComponent.vue').default);
+Vue.use(VueRouter); 
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+/* import router from './routes/routes.js';  */
+import Home from "./components/HomeComponent.vue"; 
+import Job from "./components/JobsComponent.vue"; 
+import JobsDetails from "./components/JobsDetails.vue"; 
+import Login from "./components/Login.vue"; 
+import Signup from "./components/Signup.vue"; 
+// import '../sass/style.scss'
+const routes = [
+  
+    {
+         path: '/jobs',
+          component: Job,
+        
+        },
+
+        {
+          path: '/job/:slug',
+          component: JobsDetails,
+          name:'jobsDetails'
+        },
+
+        {
+          path: '/login',
+          component: Login,
+          name:'login'
+        },
+
+        {
+          path: '/signup',
+          component: Signup,
+          name:'signup'
+        },
+  ]; 
+
+
+  const router = new VueRouter({
+    routes, // raccourci pour `routes: routes`
+    hasbang:false, 
+    mode:'history'
+  }); 
+  
+
 
 const app = new Vue({
     el: '#app',
-   
+   components:{
+      Home
+   },
+    router : router
 
 });

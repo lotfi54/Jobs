@@ -12,8 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('{all}',function(){
+  return view('welcome'); 
+})->where('all','.*');
+
 // Route::get('/jobs', 'AllJobController@index');
-Route::get('/', 'JobController@index');
+Route::get('/', 'WelcomeController@index');
 
 // Auth::routes();
 
@@ -30,7 +35,6 @@ Route::post('/application/{id}','JobController@apply')->name('apply');
 
 
 
-Route::get('/alljobs','JobController@allJobs')->name('alljobs');
 
 Route::post('/save/{id}','FavouriteController@saveJob');
 
@@ -116,3 +120,6 @@ Route::get('user/jobs/applications','JobController@applicant')->name('applicant'
   //  //  save and unsave job 
  
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
